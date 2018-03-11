@@ -5,9 +5,8 @@ spring:
     name: ek-invoke
 eureka:
   instance:
-    lease-renewal-interval-in-seconds: 10 #配置为5秒向服务器发送一次心跳请求
-    lease-expiration-duration-in-seconds: 10 #多久没有发送心跳请求 就去除此客户端
     hostname: localhost
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
   client:
       serviceUrl:
         defaultZone: http://localhost:8761/eureka/
